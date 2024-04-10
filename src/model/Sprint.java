@@ -10,12 +10,14 @@ public class Sprint {
         this.naam = naam;
     }
 
-    public String getNaam() {
-        return naam;
+    public void toonSprint() {
+        System.out.println("Sprint: " + naam);
     }
 
     public void showTaakStatus() {
-
+        for (Taak taak : taken) {
+            taak.showTaak();
+        }
     }
 
     public void addTaak(Taak taak) {
@@ -29,5 +31,7 @@ public class Sprint {
     public void deleteTaak(Taak taak) {
         taken.remove(taak);
     }
+
+
 
 }
