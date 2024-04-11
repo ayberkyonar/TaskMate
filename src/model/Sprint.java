@@ -10,6 +10,16 @@ public class Sprint {
         this.naam = naam;
     }
 
+    public String getNaam() {
+        return naam;
+    }
+
+    public ArrayList<Taak> getTaken() {
+        return this.taken;
+    }
+
+    //====================================================================================================
+
     public void toonSprint() {
         System.out.println("Sprint: " + naam);
     }
@@ -31,7 +41,6 @@ public class Sprint {
     public void deleteTaak(Taak taak) {
         taken.remove(taak);
     }
-
 
 
 }
