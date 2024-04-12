@@ -8,6 +8,7 @@ import model.Taak;
 import utils.DataSeeder;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenukeuzeAddTaak extends Menukeuze{
@@ -20,6 +21,7 @@ public class MenukeuzeAddTaak extends Menukeuze{
     public void voerMenukeuzeUit(){
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println();
         System.out.println("Voer de naam van de sprint in waarin de taak moet worden aangemaakt: ");
         String sprintNaam = scanner.nextLine();
 
@@ -35,19 +37,24 @@ public class MenukeuzeAddTaak extends Menukeuze{
         System.out.println("Voer de beschrijving van de nieuwe taak in: ");
         String taakBeschrijving = scanner.nextLine();
 
+        System.out.println("Voer de aantal punten die je wilt geven aan de taak: ");
+        int taakPunten = scanner.nextInt();
+        scanner.nextLine();
+
+
         System.out.println("Voer de status van de taak in (Gepland, Bezig of Klaar): ");
         String taakStatus = scanner.nextLine();
 
         Taak nieuweTaak;
         switch (taakStatus.toLowerCase()) {
             case "gepland":
-                nieuweTaak = new Gepland(taakNaam, taakBeschrijving, null);
+                nieuweTaak = new Gepland(taakNaam, taakBeschrijving, taakPunten, new Date());
                 break;
             case "bezig":
-                nieuweTaak = new Bezig(taakNaam, taakBeschrijving, null);
+                nieuweTaak = new Bezig(taakNaam, taakBeschrijving, taakPunten);
                 break;
             case "klaar":
-                nieuweTaak = new Klaar(taakNaam, taakBeschrijving, null, null);
+                nieuweTaak = new Klaar(taakNaam, taakBeschrijving, taakPunten, new Date());
                 break;
             default:
                 System.out.println("Taak is niet aangemaakt, probeer het opnieuw.");

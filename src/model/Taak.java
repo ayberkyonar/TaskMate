@@ -6,16 +6,15 @@ public abstract class Taak {
 
     private String titel;
     private String beschrijving;
-    private Date datumTijd;
+    private int taakPunten;
 
-    Taak(String titel, Date datumTijd) {
+    Taak(String titel, String beschrijving) {
         this.titel = titel;
-        this.datumTijd = datumTijd;
     }
 
-    Taak (String titel, String beschrijving, Date datumTijd) {
-        this(titel, datumTijd);
-        this.beschrijving = beschrijving;
+    Taak (String titel, String beschrijving, int taakPunten) {
+        this(titel, beschrijving);
+        this.taakPunten = taakPunten;
     }
 
     public String getTitel() {
@@ -34,8 +33,12 @@ public abstract class Taak {
         this.beschrijving = beschrijving;
     }
 
-    public Date getDatumTijd() {
-        return datumTijd;
+    public void setTaakPunten() {
+        this.taakPunten = taakPunten;
+    }
+
+    public int getTaakPunten() {
+        return taakPunten;
     }
 
     abstract public void showTaak();

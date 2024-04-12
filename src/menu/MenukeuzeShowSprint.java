@@ -16,11 +16,12 @@ public class MenukeuzeShowSprint extends Menukeuze {
     @Override
     public void voerMenukeuzeUit(){
         ArrayList<Sprint> sprints = DataSeeder.getInstance().getSprints();
+        System.out.println();
         System.out.println("Sprints:");
         for (Sprint sprint : sprints){
             System.out.println(sprint.getNaam());
+            System.out.println();
         }
-        System.out.println();
 
     }
 

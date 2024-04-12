@@ -15,6 +15,7 @@ public class MenukeuzeShowTaak extends Menukeuze {
     @Override
     public void voerMenukeuzeUit(){
         Scanner scanner = new Scanner(System.in);
+        System.out.println();
         System.out.println("Voer de naam van de sprint in waarin je de taken wilt zien: ");
         String sprintNaam = scanner.nextLine();
         Sprint chosenSprint = DataSeeder.getInstance().getSprint(sprintNaam);
@@ -24,25 +25,28 @@ public class MenukeuzeShowTaak extends Menukeuze {
         }
 
         ArrayList<Taak> taken = chosenSprint.getTaken();
-
+        System.out.println();
         System.out.println("To do:");
+        System.out.println();
         for (Taak taak : taken) {
             if (taak instanceof Gepland) {
-                System.out.println(taak.getTitel());
+                taak.showTaak();
             }
         }
-
+        System.out.println();
         System.out.println("In progress:");
+        System.out.println();
         for (Taak taak : taken) {
             if (taak instanceof Bezig) {
-                System.out.println(taak.getTitel());
+                taak.showTaak();
             }
         }
-
+        System.out.println();
         System.out.println("Done:");
+        System.out.println();
         for (Taak taak : taken) {
             if (taak instanceof Klaar) {
-                System.out.println(taak.getTitel());
+                taak.showTaak();
             }
         }
         System.out.println();
