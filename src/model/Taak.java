@@ -10,6 +10,7 @@ public abstract class Taak {
 
     Taak(String titel, String beschrijving) {
         this.titel = titel;
+        this.beschrijving = beschrijving;
     }
 
     Taak (String titel, String beschrijving, int taakPunten) {

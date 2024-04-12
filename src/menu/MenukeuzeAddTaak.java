@@ -37,10 +37,8 @@ public class MenukeuzeAddTaak extends Menukeuze{
         System.out.println("Voer de beschrijving van de nieuwe taak in: ");
         String taakBeschrijving = scanner.nextLine();
 
-        System.out.println("Voer de aantal punten die je wilt geven aan de taak: ");
-        int taakPunten = scanner.nextInt();
-        scanner.nextLine();
-
+        System.out.println("Voer de aantal punten die je wilt geven aan de taak (je kan dit ook leeg laten): ");
+        String taakPuntenInput = scanner.nextLine();
 
         System.out.println("Voer de status van de taak in (Gepland, Bezig of Klaar): ");
         String taakStatus = scanner.nextLine();
@@ -48,13 +46,28 @@ public class MenukeuzeAddTaak extends Menukeuze{
         Taak nieuweTaak;
         switch (taakStatus.toLowerCase()) {
             case "gepland":
-                nieuweTaak = new Gepland(taakNaam, taakBeschrijving, taakPunten, new Date());
+                if (taakPuntenInput.isEmpty()) {
+                    nieuweTaak = new Gepland(taakNaam, taakBeschrijving, new Date());
+                } else {
+                    int taakPunten = Integer.parseInt(taakPuntenInput);
+                    nieuweTaak = new Gepland(taakNaam, taakBeschrijving, taakPunten, new Date());
+                }
                 break;
             case "bezig":
-                nieuweTaak = new Bezig(taakNaam, taakBeschrijving, taakPunten);
+                if (taakPuntenInput.isEmpty()) {
+                    nieuweTaak = new Bezig(taakNaam, taakBeschrijving);
+                } else {
+                    int taakPunten = Integer.parseInt(taakPuntenInput);
+                    nieuweTaak = new Bezig(taakNaam, taakBeschrijving, taakPunten);
+                }
                 break;
             case "klaar":
-                nieuweTaak = new Klaar(taakNaam, taakBeschrijving, taakPunten, new Date());
+                if (taakPuntenInput.isEmpty()) {
+                    nieuweTaak = new Klaar(taakNaam, taakBeschrijving, new Date());
+                } else {
+                    int taakPunten = Integer.parseInt(taakPuntenInput);
+                    nieuweTaak = new Klaar(taakNaam, taakBeschrijving, taakPunten, new Date());
+                }
                 break;
             default:
                 System.out.println("Taak is niet aangemaakt, probeer het opnieuw.");
