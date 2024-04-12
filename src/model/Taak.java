@@ -2,22 +2,22 @@ package model;
 
 public abstract class Taak {
 
-    private String titel;
+    private String naam;
     private String beschrijving;
     private int taakPunten;
 
-    Taak(String titel, String beschrijving) {
-        this.titel = titel;
+    Taak(String naam, String beschrijving) {
+        this.naam = naam;
         this.beschrijving = beschrijving;
     }
 
-    Taak (String titel, String beschrijving, int taakPunten) {
-        this(titel, beschrijving);
+    Taak (String naam, String beschrijving, int taakPunten) {
+        this(naam, beschrijving);
         this.taakPunten = taakPunten;
     }
 
-    public String getTitel() {
-        return titel;
+    public String getNaam() {
+        return naam;
     }
 
     public String getBeschrijving() {

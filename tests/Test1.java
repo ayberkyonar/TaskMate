@@ -14,7 +14,7 @@ public class Test1 {
         Taak taak = new Gepland(titel, beschrijving, new Date());
 
         // Act
-        String echteTitel = taak.getTitel();
+        String echteTitel = taak.getNaam();
         String echteBeschrijving = taak.getBeschrijving();
 
         // Assert

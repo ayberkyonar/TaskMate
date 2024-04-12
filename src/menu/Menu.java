@@ -28,7 +28,7 @@ public class Menu {
             System.out.println(titel);
             int counter = 1;
             for (int i = 0; i < menukeuzes.size(); i++) {
-                System.out.println((counter++) + ". " + menukeuzes.get(i).getTitel());
+                System.out.println((counter++) + ". " + menukeuzes.get(i).getNaam());
             }
 
             try {

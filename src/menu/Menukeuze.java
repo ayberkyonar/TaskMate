@@ -8,7 +8,7 @@ public abstract class Menukeuze {
         this.titel = titel;
     }
 
-    public String getTitel(){
+    public String getNaam(){
         return titel;
     }
 

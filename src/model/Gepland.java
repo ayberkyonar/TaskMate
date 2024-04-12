@@ -22,7 +22,7 @@ public class Gepland extends Taak{
 
     @Override
     public void showTaak() {
-        System.out.println("Taak: " + getTitel());
+        System.out.println("Taak: " + getNaam());
         System.out.println("Beschrijving: " + getBeschrijving());
         System.out.println("Storypoints: " + getTaakPunten());
         System.out.println("Datum gepland: " + getDatumTijd());
