@@ -22,10 +22,10 @@ public class Klaar extends Taak {
 
     @Override
     public void showTaak() {
-        System.out.println(getTitel());
-        System.out.println(getBeschrijving());
-        System.out.println(getTaakPunten());
-        System.out.println("Datum afgerond" + getEindDatumTijd());
+        System.out.println("Taak: " + getTitel());
+        System.out.println("Beschrijving: " + getBeschrijving());
+        System.out.println("Storypoints: " + getTaakPunten());
+        System.out.println("Datum afgerond: " + getEindDatumTijd());
         System.out.println();
     }
 }

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public abstract class Taak {
 
     private String titel;
@@ -22,20 +20,8 @@ public abstract class Taak {
         return titel;
     }
 
-    public void setTitel (){
-        this.titel = titel;
-    }
-
     public String getBeschrijving() {
         return beschrijving;
-    }
-
-    public void setBeschrijving (){
-        this.beschrijving = beschrijving;
-    }
-
-    public void setTaakPunten() {
-        this.taakPunten = taakPunten;
     }
 
     public int getTaakPunten() {

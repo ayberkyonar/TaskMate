@@ -12,7 +12,6 @@ public class MenukeuzeShowSprint extends Menukeuze {
         super(titel);
     }
 
-
     @Override
     public void voerMenukeuzeUit(){
         ArrayList<Sprint> sprints = DataSeeder.getInstance().getSprints();

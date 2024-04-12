@@ -18,29 +18,8 @@ public class Sprint {
         return this.taken;
     }
 
-    //====================================================================================================
-
-    public void toonSprint() {
-        System.out.println("Sprint: " + naam);
-    }
-
-    public void showTaakStatus() {
-        for (Taak taak : taken) {
-            taak.showTaak();
-        }
-    }
-
     public void addTaak(Taak taak) {
         taken.add(taak);
     }
-
-    public void editTaak(Taak taak) {
-
-    }
-
-    public void deleteTaak(Taak taak) {
-        taken.remove(taak);
-    }
-
 
 }

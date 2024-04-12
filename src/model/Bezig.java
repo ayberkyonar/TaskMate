@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class Bezig extends Taak{
 
     public Bezig(String naam, String beschrijving) {
@@ -14,9 +12,9 @@ public class Bezig extends Taak{
 
     @Override
     public void showTaak() {
-        System.out.println(getTitel());
-        System.out.println(getBeschrijving());
-        System.out.println(getTaakPunten());
+        System.out.println("Taak: " + getTitel());
+        System.out.println("Beschrijving: " + getBeschrijving());
+        System.out.println("Storypoints: " + getTaakPunten());
         System.out.println();
     }
 }
