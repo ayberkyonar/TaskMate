@@ -9,7 +9,7 @@ public class Test2 {
     public void Test2() {
         // Arrange
         Sprint sprint = new Sprint("Test Sprint");
-        Taak taak = new Gepland("Test Taak", "Dit is een test taak", 5 , new Date());
+        Taak taak = new Programmeer("Test Taak", "Dit is een test taak", "Klaar", new Date(), "JavaScript", 4);
 
         // Act
         sprint.addTaak(taak);
