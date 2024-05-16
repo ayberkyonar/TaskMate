@@ -26,6 +26,7 @@ public abstract class Taak {
         return naam;
     }
 
+
     public String getBeschrijving() {
         return beschrijving;
     }
@@ -42,5 +43,11 @@ public abstract class Taak {
         return taakPunten;
     }
 
+    public void setStatus(String nieuweTaakStatus) {
+        this.status = nieuweTaakStatus;
+    }
+
     abstract public void showTaak();
+
+
 }

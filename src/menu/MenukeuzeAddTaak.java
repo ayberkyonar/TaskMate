@@ -86,6 +86,7 @@ public class MenukeuzeAddTaak extends Menukeuze{
                 return;
         }
         chosenSprint.addTaak(nieuweTaak);
+        DataSeeder.getInstance().addTaak(nieuweTaak);
         //System.out.println("Nieuwe taak '" + taakNaam + "' is toegevoegd aan de sprint '" + chosenSprint.getNaam() + "'.");
         //System.out.println();
     }

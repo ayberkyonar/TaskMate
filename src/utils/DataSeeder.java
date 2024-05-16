@@ -32,6 +32,19 @@ public class DataSeeder {
         return null;
     }
 
+    public void addTaak(Taak taak) {
+        this.taken.add(taak);
+    }
+
+    public Taak getTaak(String taakNaam) {
+        for (Taak taak : this.taken) {
+            if (taak.getNaam().equals(taakNaam)) {
+                return taak;
+            }
+        }
+        return null;
+    }
+
     private void initialize () {
         Menu menu = new Menu("TaskMate");
 
@@ -39,6 +52,7 @@ public class DataSeeder {
         menu.addMenukeuze(new MenukeuzeShowSprint("Toon sprints"));
         menu.addMenukeuze(new MenukeuzeAddTaak("Maak een taak aan"));
         menu.addMenukeuze(new MenukeuzeShowTaak("Toon taken"));
+        menu.addMenukeuze(new MenukeuzeEditTaak("Bewerk een taak"));
         menu.addMenukeuze(new MenukeuzeExit("Exit"));
 
         menus.add(menu);
