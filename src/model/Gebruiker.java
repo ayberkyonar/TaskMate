@@ -1,10 +1,10 @@
 package model;
 
-public abstract class Persoon {
+public abstract class Gebruiker {
 
     private String naam;
 
-    public Persoon(String naam) {
+    public Gebruiker(String naam) {
         this.naam = naam;
     }
 }

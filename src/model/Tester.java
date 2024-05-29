@@ -1,6 +1,6 @@
 package model;
 
-public class Tester extends Persoon {
+public class Tester extends Gebruiker {
 
     public Tester(String naam) {
         super(naam);
