@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Sprint {
 
-    private ArrayList<Observer> observers = new ArrayList<>();
+//    private ArrayList<Observer> observers = new ArrayList<>();
 
     private String naam;
     private ArrayList<Taak> taken = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Sprint {
         return naam;
     }
 
-    public void registerObserver(Observer o) {
+/*    public void registerObserver(Observer o) {
         observers.add(o);
     }
 
@@ -38,12 +38,12 @@ public class Sprint {
         for (Observer observer : observers) {
             observer.update();
         }
-    }
+    }*/
 
     public void addTaak(Taak taak) {
         taken.add(taak);
-        TaakObserver taakObserver = new TaakObserver(this);
+/*        TaakObserver taakObserver = new TaakObserver(this);
         registerObserver(taakObserver);
-        notifyObservers();
+        notifyObservers();*/
     }
 }

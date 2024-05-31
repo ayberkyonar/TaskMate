@@ -1,3 +1,4 @@
+/*
 package model;
 
 public class TaakObserver implements Observer {
@@ -13,4 +14,4 @@ public class TaakObserver implements Observer {
         System.out.println("Succesvol! Een taak is toegevoegd aan de sprint: " + sprint);
         System.out.println();
     }
-}
+}*/
