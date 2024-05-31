@@ -1,9 +1,13 @@
 package model;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Tester extends Persoon {
     private ArrayList<Taak> taken = new ArrayList<>();
+=======
+public class Tester extends Gebruiker {
+>>>>>>> 8dfa92eb9186057ac302fb46c4e0e57c8a426a62
 
     public Tester(String naam) {
         super(naam);
