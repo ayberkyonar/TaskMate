@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Sprint {
+public class Sprint implements Subject {
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
@@ -30,14 +30,17 @@ public class Sprint {
         return taken.size();
     }
 
+    @Override
     public void registerObserver(Observer o) {
         observers.add(o);
     }
 
+    @Override
     public void removeObserver(Observer o) {
         observers.remove(o);
     }
 
+    @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
             observer.update();
