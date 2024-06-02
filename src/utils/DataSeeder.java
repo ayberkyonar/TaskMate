@@ -10,9 +10,39 @@ public class DataSeeder {
     private ArrayList<Sprint> sprints;
     private ArrayList<Taak> taken;
     private ArrayList<Menu> menus;
+    private ArrayList<Gebruiker> gebruikers;
 
-    public Menu getMenu() {
-        return menus.get(0);
+    private DataSeeder() {
+        this.sprints = new ArrayList<>();
+        this.taken = new ArrayList<>();
+        this.menus = new ArrayList<>();
+        this.gebruikers = new ArrayList<>();
+        initialize();
+    }
+
+    public static DataSeeder getInstance() {
+        if (instance == null) {
+            instance = new DataSeeder();
+        }
+        return instance;
+    }
+
+    public Menu getMenu () {
+
+        Security security = Security.getInstance ();
+
+        if (!security.isIngelogd ()) {
+            return menus.get (0);
+        } else if (security.getActieveGebruiker() instanceof Ontwerper) {
+            return menus.get(1);
+        } else if (security.getActieveGebruiker() instanceof Programmeur) {
+            return menus.get(2);
+        } else if (security.getActieveGebruiker() instanceof Tester) {
+            return menus.get(3);
+        }   else {
+            Gebruiker gebruiker = security.getActieveGebruiker ();
+            return gebruiker.getMenu ();
+        }
     }
 
     public void addSprint(Sprint sprint) {
@@ -45,35 +75,64 @@ public class DataSeeder {
         return null;
     }
 
+    public Menu getOntwerperMenu() {
+        return menus.get(1);
+    }
+    
+    public Menu getProgrammeurMenu() {
+        return menus.get(2);
+    }
+    
+    public Menu getTesterMenu() {
+        return menus.get(3);
+    }
+
+    public Gebruiker getGebruiker (String gebruikersnaam) {
+
+        for (Gebruiker gebruiker : gebruikers) {
+
+            if (gebruiker.login (gebruikersnaam)) {
+                return gebruiker;
+            }
+        }
+
+        return null;
+    }
 
 
     private void initialize() {
-        Menu menu = new Menu("TaskMate");
+        gebruikers.add(new Ontwerper("Ontwerper"));
+        gebruikers.add(new Programmeur("Programmeur"));
+        gebruikers.add(new Tester("Tester"));
 
-        menu.addMenukeuze(new MenukeuzeAddSprint("Maak een sprint aan"));
-        menu.addMenukeuze(new MenukeuzeShowSprint("Toon sprints"));
-        menu.addMenukeuze(new MenukeuzeAddTaak("Maak een taak aan"));
-        menu.addMenukeuze(new MenukeuzeShowTaak("Toon taken"));
-        menu.addMenukeuze(new MenukeuzeEditTaak("Bewerk een taak"));
-        menu.addMenukeuze(new MenukeuzeExit("Exit"));
+        MenukeuzeLogin inloggen = new MenukeuzeLogin ("Log in");
+        MenukeuzeLogout uitloggen = new MenukeuzeLogout ("Log uit");
+        MenukeuzeAddSprint addSprint = new MenukeuzeAddSprint ("Maak een sprint aan");
+        MenukeuzeShowSprint showSprint = new MenukeuzeShowSprint ("Toon sprints");
+        MenukeuzeAddTaak addTaak = new MenukeuzeAddTaak ("Maak een taak aan");
+        MenukeuzeShowTaak showTaak = new MenukeuzeShowTaak ("Toon taken");
+        MenukeuzeEditTaak editTaak = new MenukeuzeEditTaak ("Bewerk een taak");
+        MenukeuzeExit exit = new MenukeuzeExit ("Exit");
+
+
+        Menu menu = new Menu("Gebruiker");
+        menu.addMenukeuze(inloggen);
+        menu.addMenukeuze(exit);
+
+        Menu ingelogdMenu = new Menu("TaskMate");
+        ingelogdMenu.addMenukeuze(addSprint);
+        ingelogdMenu.addMenukeuze(showSprint);
+        ingelogdMenu.addMenukeuze(addTaak);
+        ingelogdMenu.addMenukeuze(showTaak);
+        ingelogdMenu.addMenukeuze(editTaak);
+        ingelogdMenu.addMenukeuze(uitloggen);
+        ingelogdMenu.addMenukeuze(exit);
 
         menus.add(menu);
+        menus.add(ingelogdMenu);
 
     }
 
-    private DataSeeder() {
-        this.sprints = new ArrayList<>();
-        this.taken = new ArrayList<>();
-        this.menus = new ArrayList<>();
-        initialize();
-    }
-
-    public static DataSeeder getInstance() {
-        if (instance == null) {
-            instance = new DataSeeder();
-        }
-        return instance;
-    }
 
 
 }
