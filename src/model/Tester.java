@@ -1,24 +1,23 @@
 package model;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 
-public class Tester extends Persoon {
-    private ArrayList<Taak> taken = new ArrayList<>();
-=======
 public class Tester extends Gebruiker {
->>>>>>> 8dfa92eb9186057ac302fb46c4e0e57c8a426a62
+    private ArrayList<Test> testTaken;
 
     public Tester(String naam) {
         super(naam);
+        this.testTaken = new ArrayList<>();
     }
 
     @Override
-    public ArrayList<Taak> getTaken() {
-        return this.taken;
+    public void addTaak(Taak taak) {
+        if (taak instanceof Test) {
+            this.testTaken.add((Test) taak);
+        }
     }
 
-    public void printNaam() {
-        System.out.println("Tester: " + getNaam());
+    public ArrayList<Test> getTestTaken() {
+        return this.testTaken;
     }
 }

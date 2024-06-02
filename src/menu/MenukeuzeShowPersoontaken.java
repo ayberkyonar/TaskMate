@@ -14,7 +14,7 @@ public class MenukeuzeShowPersoontaken extends Menukeuze {
 
     @Override
     public void voerMenukeuzeUit(){
-        ArrayList<Persoon> personen = DataSeeder.getInstance().getPersonen();
+        ArrayList<Gebruiker> gebruikers = DataSeeder.getInstance().getGebruikers();
         Scanner scanner = new Scanner(System.in);
         boolean geldigeInvoer = false;
 
@@ -28,30 +28,29 @@ public class MenukeuzeShowPersoontaken extends Menukeuze {
                 continue;
             }
 
-            System.out.println("Kies het type persoon (Ontwerper, Programmeur of Tester): ");
-            String persoonType = scanner.nextLine();
-
+            System.out.println("Kies het type gebruiker (Ontwerper, Programmeur of Tester): ");
+            String gebruikerType = scanner.nextLine();
             System.out.println();
 
-            for (Persoon persoon : personen){
-                ArrayList<Taak> taken = chosenSprint.getTaken();
-                for (Taak taak : taken) {
-                    if (persoonType.equalsIgnoreCase("Ontwerper") && taak instanceof Ontwerp && persoon.getTaken().contains(taak)) {
-                        persoon.printNaam();
-                        System.out.println("Ontwerptaken:");
+            for (Gebruiker gebruiker : gebruikers){
+                if (gebruikerType.equalsIgnoreCase("Ontwerper") && gebruiker instanceof Ontwerper) {
+                    System.out.println("Ontwerptaken van " + gebruiker.getNaam() + ":");
+                    for (Ontwerp taak : ((Ontwerper) gebruiker).getOntwerpTaken()) {
                         taak.showTaak();
-                        geldigeInvoer = true;
-                    } else if (persoonType.equalsIgnoreCase("Programmeur") && taak instanceof Programmeer && persoon.getTaken().contains(taak)) {
-                        persoon.printNaam();
-                        System.out.println("Programmeertaken:");
-                        taak.showTaak();
-                        geldigeInvoer = true;
-                    } else if (persoonType.equalsIgnoreCase("Tester") && taak instanceof Test && persoon.getTaken().contains(taak)) {
-                        persoon.printNaam();
-                        System.out.println("Testtaken:");
-                        taak.showTaak();
-                        geldigeInvoer = true;
                     }
+                    geldigeInvoer = true;
+                } else if (gebruikerType.equalsIgnoreCase("Programmeur") && gebruiker instanceof Programmeur) {
+                    System.out.println("Programmeertaken van " + gebruiker.getNaam() + ":");
+                    for (Programmeer taak : ((Programmeur) gebruiker).getProgrammeerTaken()) {
+                        taak.showTaak();
+                    }
+                    geldigeInvoer = true;
+                } else if (gebruikerType.equalsIgnoreCase("Tester") && gebruiker instanceof Tester) {
+                    System.out.println("Testtaken van " + gebruiker.getNaam() + ":");
+                    for (Test taak : ((Tester) gebruiker).getTestTaken()) {
+                        taak.showTaak();
+                    }
+                    geldigeInvoer = true;
                 }
                 System.out.println();
             }

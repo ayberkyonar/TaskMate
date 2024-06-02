@@ -1,25 +1,23 @@
 package model;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 
-public class Programmeur extends Persoon {
-
-    private ArrayList<Taak> taken = new ArrayList<>();
-
-=======
 public class Programmeur extends Gebruiker {
->>>>>>> 8dfa92eb9186057ac302fb46c4e0e57c8a426a62
+    private ArrayList<Programmeer> programmeerTaken;
+
     public Programmeur(String naam) {
         super(naam);
+        this.programmeerTaken = new ArrayList<>();
     }
 
     @Override
-    public ArrayList<Taak> getTaken() {
-        return this.taken;
+    public void addTaak(Taak taak) {
+        if (taak instanceof Programmeer) {
+            this.programmeerTaken.add((Programmeer) taak);
+        }
     }
 
-    public void printNaam() {
-        System.out.println("Programmeur: " + getNaam());
+    public ArrayList<Programmeer> getProgrammeerTaken() {
+        return this.programmeerTaken;
     }
 }

@@ -10,7 +10,7 @@ public class DataSeeder {
     private ArrayList<Sprint> sprints;
     private ArrayList<Taak> taken;
     private ArrayList<Menu> menus;
-    private ArrayList<Persoon> personen;
+    private ArrayList<Gebruiker> gebruikers;
 
     public Menu getMenu() {
         return menus.get(0);
@@ -46,11 +46,17 @@ public class DataSeeder {
         return null;
     }
 
-    public ArrayList<Persoon> getPersonen() {
-        return personen;
-    }
+
 
     private void initialize() {
+        Gebruiker ontwerper = new Ontwerper("Ontwerper");
+        Gebruiker programmeur = new Programmeur("Programmeur");
+        Gebruiker tester = new Tester("Tester");
+
+        gebruikers.add(ontwerper);
+        gebruikers.add(programmeur);
+        gebruikers.add(tester);
+
         Menu menu = new Menu("TaskMate");
 
         menu.addMenukeuze(new MenukeuzeAddSprint("Maak een sprint aan"));
@@ -65,11 +71,15 @@ public class DataSeeder {
 
     }
 
+    public ArrayList<Gebruiker> getGebruikers() {
+        return gebruikers;
+    }
+
     private DataSeeder() {
         this.sprints = new ArrayList<>();
         this.taken = new ArrayList<>();
         this.menus = new ArrayList<>();
-        this.personen = new ArrayList<>();
+        this.gebruikers = new ArrayList<>();
         initialize();
     }
 
