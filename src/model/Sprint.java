@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Sprint {
 
+    private ArrayList<Observer> observers = new ArrayList<>();
+
     private String naam;
     private ArrayList<Taak> taken = new ArrayList<>();
 
@@ -24,15 +26,42 @@ public class Sprint {
         return naam;
     }
 
-    public void addTaak(Taak taak) {
-        taken.add(taak);
+    public int getAantalTaken() {
+        return taken.size();
     }
 
-    public void addTaakToGebruiker(Taak taak, Gebruiker gebruiker) {
-        if ((taak instanceof Ontwerp && gebruiker instanceof Ontwerper) ||
-                (taak instanceof Programmeer && gebruiker instanceof Programmeur) ||
-                (taak instanceof Test && gebruiker instanceof Tester)) {
-            gebruiker.addTaak(taak);
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
         }
+    }
+
+    public void addTaak(Taak taak) {
+        taken.add(taak);
+
+        TaakObserver taakObserver = findObserverForSprint();
+        if (taakObserver == null) {
+            taakObserver = new TaakObserver(this);
+            registerObserver(taakObserver);
+        }
+
+        notifyObservers();
+    }
+
+    private TaakObserver findObserverForSprint() {
+        for (Observer observer : observers) {
+            if (observer instanceof TaakObserver) {
+                return (TaakObserver) observer;
+            }
+        }
+        return null;
     }
 }
