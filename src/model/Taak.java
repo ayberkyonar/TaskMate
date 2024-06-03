@@ -75,14 +75,16 @@ public abstract class Taak implements Subject {
     protected abstract void printSpecifiekeInformatie();
 
     public void load(){
-        System.out.println(getNaam());
-        System.out.println(getBeschrijving());
-        System.out.println(getStatus());
-        System.out.println(getDatumTijd());
-        System.out.println(getTaakPunten());
-        System.out.println(getTaakType());
+        System.out.println("Naam: " + getNaam());
+        System.out.println("Beschrijving " + getBeschrijving());
+        System.out.println("Status: " + getStatus());
+        System.out.println("Storypoints: " + getTaakPunten());
+        System.out.println("Datum aangemaakt: " + getDatumTijd());
+        System.out.println("Type taak: " + getTaakType());
         printSpecifiekeInformatie();
     }
+
+
 
 
 
