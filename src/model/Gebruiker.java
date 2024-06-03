@@ -1,8 +1,9 @@
 package model;
 
 import menu.Menu;
+import utils.DataSeeder;
 
-public abstract class Gebruiker {
+public abstract class Gebruiker implements Observer {
 
     private String gebruikersnaam;
 
@@ -22,5 +23,13 @@ public abstract class Gebruiker {
         return this.getGebruikersnaam ().equals (gebruikersnaam);
     }
 
-    public abstract Menu getMenu ();
+    @Override
+    public void update(Taak taak) {
+        System.out.println();
+        System.out.println("Hallo " + getGebruikersnaam() + ", de status van de taak " + taak.getNaam() + " is veranderd naar: " + taak.getStatus());
+        System.out.println();
+    }
+
+    abstract public void bekijkProfiel();
+
 }

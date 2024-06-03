@@ -1,12 +1,7 @@
 package menu;
 
-import model.Ontwerp;
-import model.Programmeer;
-import model.Test;
-import model.Sprint;
-import model.Taak;
-import utils.DataSeeder;
-
+import model.*;
+import utils.*;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -19,6 +14,10 @@ public class MenukeuzeAddTaak extends Menukeuze{
     @Override
     public void voerMenukeuzeUit(){
         Scanner scanner = new Scanner(System.in);
+
+        Security security = Security.getInstance();
+        Gebruiker gebruiker = security.getActieveGebruiker();
+
 
         System.out.println();
         System.out.println("Voer de naam van de sprint in waarin de taak moet worden aangemaakt: ");
@@ -85,7 +84,7 @@ public class MenukeuzeAddTaak extends Menukeuze{
                 System.out.println("Taak is niet aangemaakt, probeer het opnieuw.");
                 return;
         }
-        chosenSprint.addTaak(nieuweTaak);
+        chosenSprint.addTaak(nieuweTaak, gebruiker);
         DataSeeder.getInstance().addTaak(nieuweTaak);
         //System.out.println("Nieuwe taak '" + taakNaam + "' is toegevoegd aan de sprint '" + chosenSprint.getNaam() + "'.");
         //System.out.println();

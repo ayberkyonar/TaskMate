@@ -28,20 +28,12 @@ public class DataSeeder {
     }
 
     public Menu getMenu () {
-
         Security security = Security.getInstance ();
 
         if (!security.isIngelogd ()) {
             return menus.get (0);
-        } else if (security.getActieveGebruiker() instanceof Ontwerper) {
-            return menus.get(1);
-        } else if (security.getActieveGebruiker() instanceof Programmeur) {
-            return menus.get(2);
-        } else if (security.getActieveGebruiker() instanceof Tester) {
-            return menus.get(3);
-        }   else {
-            Gebruiker gebruiker = security.getActieveGebruiker ();
-            return gebruiker.getMenu ();
+        } else {
+            return menus.get (1);
         }
     }
 
@@ -75,18 +67,6 @@ public class DataSeeder {
         return null;
     }
 
-    public Menu getOntwerperMenu() {
-        return menus.get(1);
-    }
-    
-    public Menu getProgrammeurMenu() {
-        return menus.get(2);
-    }
-    
-    public Menu getTesterMenu() {
-        return menus.get(3);
-    }
-
     public Gebruiker getGebruiker (String gebruikersnaam) {
 
         for (Gebruiker gebruiker : gebruikers) {
@@ -101,9 +81,9 @@ public class DataSeeder {
 
 
     private void initialize() {
-        gebruikers.add(new Ontwerper("Ontwerper"));
-        gebruikers.add(new Programmeur("Programmeur"));
-        gebruikers.add(new Tester("Tester"));
+        gebruikers.add(new Ontwerper("Ontwerper", 5, "UX Design"));
+        gebruikers.add(new Programmeur("Programmeur", "Junior"));
+        gebruikers.add(new Tester("Tester", 7));
 
         MenukeuzeLogin inloggen = new MenukeuzeLogin ("Log in");
         MenukeuzeLogout uitloggen = new MenukeuzeLogout ("Log uit");
@@ -112,6 +92,7 @@ public class DataSeeder {
         MenukeuzeAddTaak addTaak = new MenukeuzeAddTaak ("Maak een taak aan");
         MenukeuzeShowTaak showTaak = new MenukeuzeShowTaak ("Toon taken");
         MenukeuzeEditTaak editTaak = new MenukeuzeEditTaak ("Bewerk een taak");
+        MenukeuzeBekijkProfiel bekijkProfiel = new MenukeuzeBekijkProfiel ("Bekijk profiel");
         MenukeuzeExit exit = new MenukeuzeExit ("Exit");
 
 
@@ -125,6 +106,7 @@ public class DataSeeder {
         ingelogdMenu.addMenukeuze(addTaak);
         ingelogdMenu.addMenukeuze(showTaak);
         ingelogdMenu.addMenukeuze(editTaak);
+        ingelogdMenu.addMenukeuze(bekijkProfiel);
         ingelogdMenu.addMenukeuze(uitloggen);
         ingelogdMenu.addMenukeuze(exit);
 

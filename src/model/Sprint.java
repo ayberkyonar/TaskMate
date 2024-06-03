@@ -2,9 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
-public class Sprint implements Subject {
+public class Sprint {
+//  public class Sprint implements Subject {
 
-    private ArrayList<Observer> observers = new ArrayList<>();
+    /*private ArrayList<Observer> observers = new ArrayList<>();*/
 
     private String naam;
     private ArrayList<Taak> taken = new ArrayList<>();
@@ -26,11 +27,7 @@ public class Sprint implements Subject {
         return naam;
     }
 
-    public int getAantalTaken() {
-        return taken.size();
-    }
-
-    @Override
+/*    @Override
     public void registerObserver(Observer o) {
         observers.add(o);
     }
@@ -45,9 +42,14 @@ public class Sprint implements Subject {
         for (Observer observer : observers) {
             observer.update();
         }
+    }*/
+
+    public void addTaak(Taak taak, Gebruiker observer) {
+        taken.add(taak);
+        taak.registerObserver(observer);
     }
 
-    public void addTaak(Taak taak) {
+/*    public void addTaak(Taak taak) {
         taken.add(taak);
 
         TaakObserver taakObserver = findObserverForSprint();
@@ -57,14 +59,14 @@ public class Sprint implements Subject {
         }
 
         notifyObservers();
-    }
+    }*/
 
-    private TaakObserver findObserverForSprint() {
+/*    private TaakObserver findObserverForSprint() {
         for (Observer observer : observers) {
             if (observer instanceof TaakObserver) {
                 return (TaakObserver) observer;
             }
         }
         return null;
-    }
+    }*/
 }

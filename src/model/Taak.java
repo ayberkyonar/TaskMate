@@ -1,14 +1,18 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public abstract class Taak {
+public abstract class Taak implements Subject {
 
     private String naam;
     private String beschrijving;
     private String status;
     private Date datumTijd;
     private int taakPunten;
+
+    private List<Observer> observers = new ArrayList<>();
 
     Taak(String naam, String beschrijving, String status, Date datumTijd) {
         this.naam = naam;
@@ -43,8 +47,26 @@ public abstract class Taak {
         return taakPunten;
     }
 
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
+    }
+
     public void setStatus(String nieuweTaakStatus) {
         this.status = nieuweTaakStatus;
+        notifyObservers();
     }
 
     abstract public void showTaak();

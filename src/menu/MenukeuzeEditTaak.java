@@ -38,6 +38,6 @@ public class MenukeuzeEditTaak extends Menukeuze {
         String nieuweTaakStatus = scanner.nextLine();
         chosenTaak.setStatus(nieuweTaakStatus);
 
-        System.out.println("Status van taak '" + taakNaam + "' is bijgewerkt naar '" + nieuweTaakStatus + "'.");
+        //System.out.println("Status van taak '" + taakNaam + "' is bijgewerkt naar '" + nieuweTaakStatus + "'.");
     }
 }

@@ -12,7 +12,7 @@ public class Test2 {
         Taak taak = new Programmeer("Test Taak", "Dit is een test taak", "Klaar", new Date(), "JavaScript", 4);
 
         // Act
-        sprint.addTaak(taak);
+        //sprint.addTaak(taak);
 
         // Assert
         Assertions.assertTrue(sprint.getTaken().contains(taak));

@@ -5,12 +5,21 @@ import utils.DataSeeder;
 
 public class Programmeur extends Gebruiker{
 
-    public Programmeur(String gebruikersnaam) {
+    private String programmeerNiveau;
+
+    public Programmeur(String gebruikersnaam, String programmeerNiveau) {
         super(gebruikersnaam);
+        this.programmeerNiveau = programmeerNiveau;
+    }
+
+    public String getProgrammeerNiveau() {
+        return this.programmeerNiveau;
     }
 
     @Override
-    public Menu getMenu() {
-        return DataSeeder.getInstance().getProgrammeurMenu();
+    public void bekijkProfiel(){
+        System.out.println("Gebruikersnaam: " + getGebruikersnaam());
+        System.out.println("Programmeerniveau: " + getProgrammeerNiveau());
+
     }
 }
