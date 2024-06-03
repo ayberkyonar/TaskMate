@@ -23,12 +23,17 @@ public class Ontwerp extends Taak{
 
     @Override
     public void showTaak() {
-        System.out.println("Ontwerptaak: " + getNaam());
-        System.out.println("Beschrijving: " + getBeschrijving());
-        System.out.println("Storypoints: " + getTaakPunten());
-        System.out.println("Ontwerp tool: " + getOntwerpTool());
-        System.out.println("Status: " + getStatus());
-        System.out.println("Datum aangemaakt: " + getDatumTijd());
+        load();
         System.out.println();
+    }
+
+    @Override
+    protected void printSpecifiekeInformatie() {
+        System.out.println("Ontwerp tool: " + getOntwerpTool());
+    }
+
+    @Override
+    public String getTaakType() {
+        return "Ontwerp";
     }
 }

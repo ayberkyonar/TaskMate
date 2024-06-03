@@ -31,13 +31,18 @@ public class Programmeer extends Taak{
 
     @Override
     public void showTaak() {
-        System.out.println("Programmeertaak: " + getNaam());
-        System.out.println("Beschrijving: " + getBeschrijving());
-        System.out.println("Storypoints: " + getTaakPunten());
+        load();
+        System.out.println();
+    }
+
+    @Override
+    protected void printSpecifiekeInformatie() {
         System.out.println("Programmeertaal: " + getProgrammeerTaal());
         System.out.println("Aantal klassen: " + getAantalKlassen());
-        System.out.println("Status: " + getStatus());
-        System.out.println("Datum aangemaakt: " + getDatumTijd());
-        System.out.println();
+    }
+
+    @Override
+    public String getTaakType() {
+        return "Programmeer";
     }
 }

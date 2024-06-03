@@ -30,7 +30,6 @@ public abstract class Taak implements Subject {
         return naam;
     }
 
-
     public String getBeschrijving() {
         return beschrijving;
     }
@@ -70,6 +69,21 @@ public abstract class Taak implements Subject {
     }
 
     abstract public void showTaak();
+
+    abstract public String getTaakType();
+
+    protected abstract void printSpecifiekeInformatie();
+
+    public void load(){
+        System.out.println(getNaam());
+        System.out.println(getBeschrijving());
+        System.out.println(getStatus());
+        System.out.println(getDatumTijd());
+        System.out.println(getTaakPunten());
+        System.out.println(getTaakType());
+        printSpecifiekeInformatie();
+    }
+
 
 
 }
