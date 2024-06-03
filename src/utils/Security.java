@@ -9,10 +9,6 @@ public class Security {
     private static Security instance = null;
     private Gebruiker actieveGebruiker;
 
-    private void setActieveGebruiker (Gebruiker gebruiker) {
-        this.actieveGebruiker = gebruiker;
-    }
-
     private Security() {
         setActieveGebruiker (null);
     }
@@ -28,6 +24,10 @@ public class Security {
 
     public Gebruiker getActieveGebruiker () {
         return actieveGebruiker;
+    }
+
+    private void setActieveGebruiker (Gebruiker gebruiker) {
+        this.actieveGebruiker = gebruiker;
     }
 
     public boolean isIngelogd () {

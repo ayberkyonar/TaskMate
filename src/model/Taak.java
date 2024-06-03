@@ -12,7 +12,7 @@ public abstract class Taak implements Subject {
     private Date datumTijd;
     private int taakPunten;
 
-    private List<Observer> observers = new ArrayList<>();
+    private ArrayList<Observer> observers = new ArrayList<>();
 
     Taak(String naam, String beschrijving, String status, Date datumTijd) {
         this.naam = naam;
@@ -46,23 +46,6 @@ public abstract class Taak implements Subject {
         return taakPunten;
     }
 
-    @Override
-    public void registerObserver(Observer o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(Observer o) {
-        observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update(this);
-        }
-    }
-
     public void setStatus(String nieuweTaakStatus) {
         this.status = nieuweTaakStatus;
         notifyObservers();
@@ -84,8 +67,21 @@ public abstract class Taak implements Subject {
         printSpecifiekeInformatie();
     }
 
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
 
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
 
-
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(this);
+        }
+    }
 
 }

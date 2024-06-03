@@ -7,16 +7,16 @@ public abstract class Gebruiker implements Observer {
 
     private String gebruikersnaam;
 
-    private void setGebruikersnaam (String gebruikersnaam) {
-        this.gebruikersnaam = gebruikersnaam;
+    public Gebruiker (String gebruikersnaam) {
+        setGebruikersnaam (gebruikersnaam);
     }
 
     public String getGebruikersnaam () {
         return this.gebruikersnaam;
     }
 
-    public Gebruiker (String gebruikersnaam) {
-        setGebruikersnaam (gebruikersnaam);
+    private void setGebruikersnaam (String gebruikersnaam) {
+        this.gebruikersnaam = gebruikersnaam;
     }
 
     public boolean login (String gebruikersnaam) {
