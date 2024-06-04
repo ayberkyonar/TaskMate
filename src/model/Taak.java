@@ -2,27 +2,28 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public abstract class Taak implements Subject {
+public abstract class Taak implements TaakMelder {
 
     private String naam;
     private String beschrijving;
     private String status;
     private Date datumTijd;
     private int taakPunten;
+    private TaakMethode taakMethode = new TaakMethode();
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
-    Taak(String naam, String beschrijving, String status, Date datumTijd) {
+    Taak(String naam, String beschrijving, String status, Date datumTijd, TaakMethode taakMethode) {
         this.naam = naam;
         this.beschrijving = beschrijving;
         this.status = status;
         this.datumTijd = datumTijd;
+        this.taakMethode = taakMethode;
     }
 
-    Taak (String naam, String beschrijving, String status, Date datumTijd, int taakPunten) {
-        this(naam, beschrijving, status, datumTijd);
+    Taak (String naam, String beschrijving, String status, Date datumTijd, int taakPunten, TaakMethode taakMethode) {
+        this(naam, beschrijving, status, datumTijd, taakMethode);
         this.taakPunten = taakPunten;
     }
 
@@ -55,17 +56,7 @@ public abstract class Taak implements Subject {
 
     abstract public String getTaakType();
 
-    protected abstract void printSpecifiekeInformatie();
-
-    public void load(){
-        System.out.println("Naam: " + getNaam());
-        System.out.println("Beschrijving " + getBeschrijving());
-        System.out.println("Status: " + getStatus());
-        System.out.println("Storypoints: " + getTaakPunten());
-        System.out.println("Datum aangemaakt: " + getDatumTijd());
-        System.out.println("Type taak: " + getTaakType());
-        printSpecifiekeInformatie();
-    }
+    abstract public void printSpecifiekeInformatie();
 
     @Override
     public void registerObserver(Observer o) {

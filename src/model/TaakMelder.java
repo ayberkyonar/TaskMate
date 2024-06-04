@@ -1,6 +1,6 @@
 package model;
 
-public interface Subject {
+public interface TaakMelder {
 
     void registerObserver(Observer o);
     void removeObserver(Observer o);

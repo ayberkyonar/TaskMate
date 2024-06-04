@@ -6,13 +6,13 @@ public class Test extends Taak {
 
     private int aantalTestCases;
 
-    public Test(String naam, String beschrijving, String status , Date datumTijd, int aantalTestCases) {
-        super(naam, beschrijving, status, datumTijd);
+    public Test(String naam, String beschrijving, String status , Date datumTijd, int aantalTestCases, TaakMethode taakMethode) {
+        super(naam, beschrijving, status, datumTijd, taakMethode);
         this.aantalTestCases = aantalTestCases;
     }
 
-    public Test(String naam, String beschrijving, String status , Date datumTijd, int taakPunten , int aantalTestCases) {
-        super(naam, beschrijving, status, datumTijd , taakPunten);
+    public Test(String naam, String beschrijving, String status , Date datumTijd, int taakPunten , int aantalTestCases, TaakMethode taakMethode) {
+        super(naam, beschrijving, status, datumTijd , taakPunten, taakMethode);
         this.aantalTestCases = aantalTestCases;
     }
 
@@ -22,12 +22,12 @@ public class Test extends Taak {
 
     @Override
     public void showTaak() {
-        load();
-        System.out.println();
+        TaakMethode taakMethode = new TaakMethode();
+        taakMethode.load(this);
     }
 
     @Override
-    protected void printSpecifiekeInformatie() {
+    public void printSpecifiekeInformatie() {
         System.out.println("Aantal testcases: " + getAantalTestCases());
     }
 

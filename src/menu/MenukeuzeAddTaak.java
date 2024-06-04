@@ -49,10 +49,10 @@ public class MenukeuzeAddTaak extends Menukeuze{
                 System.out.println("Voer de ontwerptool in die wordt gebruikt: ");
                 String ontwerpTool = scanner.nextLine();
                 if (taakPuntenInput.isEmpty()) {
-                    nieuweTaak = new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), ontwerpTool);
+                    nieuweTaak = new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), ontwerpTool, new TaakMethode());
                 } else {
                     int taakPunten = Integer.parseInt(taakPuntenInput);
-                    nieuweTaak = new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, ontwerpTool);
+                    nieuweTaak = new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, ontwerpTool, new TaakMethode());
                 }
                 break;
             case "programmeer":
@@ -63,10 +63,10 @@ public class MenukeuzeAddTaak extends Menukeuze{
                 scanner.nextLine();
 
                 if (taakPuntenInput.isEmpty()) {
-                    nieuweTaak = new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), programmeerTaal, aantalKlassen);
+                    nieuweTaak = new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), programmeerTaal, aantalKlassen, new TaakMethode());
                 } else {
                     int taakPunten = Integer.parseInt(taakPuntenInput);
-                    nieuweTaak = new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, programmeerTaal, aantalKlassen);
+                    nieuweTaak = new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, programmeerTaal, aantalKlassen, new TaakMethode());
                 }
                 break;
             case "test":
@@ -74,10 +74,10 @@ public class MenukeuzeAddTaak extends Menukeuze{
                 int aantalTestCases = scanner.nextInt();
                 scanner.nextLine();
                 if (taakPuntenInput.isEmpty()) {
-                    nieuweTaak = new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), aantalTestCases);
+                    nieuweTaak = new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), aantalTestCases, new TaakMethode());
                 } else {
                     int taakPunten = Integer.parseInt(taakPuntenInput);
-                    nieuweTaak = new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, aantalTestCases);
+                    nieuweTaak = new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, aantalTestCases, new TaakMethode());
                 }
                 break;
             default:

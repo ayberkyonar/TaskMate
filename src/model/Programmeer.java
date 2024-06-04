@@ -8,14 +8,14 @@ public class Programmeer extends Taak{
     private int aantalKlassen;
 
 
-    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, String programmeerTaal, int aantalKlassen) {
-        super(naam, beschrijving, status, datumTijd);
+    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, String programmeerTaal, int aantalKlassen, TaakMethode taakMethode) {
+        super(naam, beschrijving, status, datumTijd, taakMethode);
         this.programmeerTaal = programmeerTaal;
         this.aantalKlassen = aantalKlassen;
     }
 
-    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, int taakPunten, String programmeerTaal, int aantalKlassen) {
-        super(naam, beschrijving, status, datumTijd , taakPunten);
+    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, int taakPunten, String programmeerTaal, int aantalKlassen, TaakMethode taakMethode) {
+        super(naam, beschrijving, status, datumTijd , taakPunten, taakMethode);
         this.programmeerTaal = programmeerTaal;
         this.aantalKlassen = aantalKlassen;
 
@@ -31,12 +31,12 @@ public class Programmeer extends Taak{
 
     @Override
     public void showTaak() {
-        load();
-        System.out.println();
+        TaakMethode taakMethode = new TaakMethode();
+        taakMethode.load(this);
     }
 
     @Override
-    protected void printSpecifiekeInformatie() {
+    public void printSpecifiekeInformatie() {
         System.out.println("Programmeertaal: " + getProgrammeerTaal());
         System.out.println("Aantal klassen: " + getAantalKlassen());
     }
