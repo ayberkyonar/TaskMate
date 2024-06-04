@@ -8,17 +8,16 @@ public class Programmeer extends Taak{
     private int aantalKlassen;
 
 
-    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, String programmeerTaal, int aantalKlassen, TaakMethode taakMethode) {
-        super(naam, beschrijving, status, datumTijd, taakMethode);
+    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, String programmeerTaal, int aantalKlassen) {
+        super(naam, beschrijving, status, datumTijd);
         this.programmeerTaal = programmeerTaal;
         this.aantalKlassen = aantalKlassen;
     }
 
-    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, int taakPunten, String programmeerTaal, int aantalKlassen, TaakMethode taakMethode) {
-        super(naam, beschrijving, status, datumTijd , taakPunten, taakMethode);
+    public Programmeer(String naam, String beschrijving, String status , Date datumTijd, int taakPunten, String programmeerTaal, int aantalKlassen) {
+        super(naam, beschrijving, status, datumTijd , taakPunten);
         this.programmeerTaal = programmeerTaal;
         this.aantalKlassen = aantalKlassen;
-
     }
 
     public String getProgrammeerTaal() {

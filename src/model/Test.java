@@ -6,13 +6,13 @@ public class Test extends Taak {
 
     private int aantalTestCases;
 
-    public Test(String naam, String beschrijving, String status , Date datumTijd, int aantalTestCases, TaakMethode taakMethode) {
-        super(naam, beschrijving, status, datumTijd, taakMethode);
+    public Test(String naam, String beschrijving, String status , Date datumTijd, int aantalTestCases) {
+        super(naam, beschrijving, status, datumTijd);
         this.aantalTestCases = aantalTestCases;
     }
 
-    public Test(String naam, String beschrijving, String status , Date datumTijd, int taakPunten , int aantalTestCases, TaakMethode taakMethode) {
-        super(naam, beschrijving, status, datumTijd , taakPunten, taakMethode);
+    public Test(String naam, String beschrijving, String status , Date datumTijd, int taakPunten , int aantalTestCases) {
+        super(naam, beschrijving, status, datumTijd , taakPunten);
         this.aantalTestCases = aantalTestCases;
     }
 

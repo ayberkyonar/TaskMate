@@ -14,16 +14,15 @@ public abstract class Taak implements TaakMelder {
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
-    Taak(String naam, String beschrijving, String status, Date datumTijd, TaakMethode taakMethode) {
+    Taak(String naam, String beschrijving, String status, Date datumTijd) {
         this.naam = naam;
         this.beschrijving = beschrijving;
         this.status = status;
         this.datumTijd = datumTijd;
-        this.taakMethode = taakMethode;
     }
 
-    Taak (String naam, String beschrijving, String status, Date datumTijd, int taakPunten, TaakMethode taakMethode) {
-        this(naam, beschrijving, status, datumTijd, taakMethode);
+    Taak (String naam, String beschrijving, String status, Date datumTijd, int taakPunten) {
+        this(naam, beschrijving, status, datumTijd);
         this.taakPunten = taakPunten;
     }
 
@@ -52,7 +51,9 @@ public abstract class Taak implements TaakMelder {
         notifyObservers();
     }
 
-    abstract public void showTaak();
+    public void showTaak() {
+        taakMethode.load(this);
+    }
 
     abstract public String getTaakType();
 

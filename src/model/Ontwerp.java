@@ -6,15 +6,14 @@ import model.TaakMethode;
 public class Ontwerp extends Taak{
     private String ontwerpTool;
 
-    public Ontwerp(String naam, String beschrijving, String status , Date datumTijd, String ontwerpTool, TaakMethode taakMethode) {
-        super(naam, beschrijving, status, datumTijd, taakMethode);
+    public Ontwerp(String naam, String beschrijving, String status , Date datumTijd, String ontwerpTool) {
+        super(naam, beschrijving, status, datumTijd);
         this.ontwerpTool = ontwerpTool;
     }
 
-    public Ontwerp(String naam, String beschrijving, String status , Date datumTijd, int taakPunten, String ontwerpTool, TaakMethode taakMethode) {
-        super(naam, beschrijving, status, datumTijd , taakPunten, taakMethode);
+    public Ontwerp(String naam, String beschrijving, String status , Date datumTijd, int taakPunten, String ontwerpTool) {
+        super(naam, beschrijving, status, datumTijd , taakPunten);
         this.ontwerpTool = ontwerpTool;
-
     }
 
     public String getOntwerpTool() {

@@ -34,10 +34,16 @@ public class MenukeuzeEditTaak extends Menukeuze {
             return;
         }
 
-        System.out.println("Voer de nieuwe status van de taak in (Gepland, Bezig, Klaar): ");
-        String nieuweTaakStatus = scanner.nextLine();
-        chosenTaak.setStatus(nieuweTaakStatus);
+        while (true) {
+            System.out.println("Voer de nieuwe status van de taak in (Gepland, Bezig, Klaar): ");
+            String nieuweTaakStatus = scanner.nextLine();
 
-        //System.out.println("Status van taak '" + taakNaam + "' is bijgewerkt naar '" + nieuweTaakStatus + "'.");
+            if (nieuweTaakStatus.equals("Gepland") || nieuweTaakStatus.equals("Bezig") || nieuweTaakStatus.equals("Klaar")) {
+                chosenTaak.setStatus(nieuweTaakStatus);
+                break;
+            } else {
+                System.out.println("Ongeldige status. Voer 'Gepland', 'Bezig' of 'Klaar' in.");
+            }
+        }
     }
 }
