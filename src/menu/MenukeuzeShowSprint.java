@@ -21,7 +21,6 @@ public class MenukeuzeShowSprint extends Menukeuze {
             System.out.println(sprint.getNaam());
             System.out.println();
         }
-
     }
 
 }

@@ -20,6 +20,5 @@ public class Programmeur extends Gebruiker{
     public void bekijkProfiel(){
         System.out.println("Gebruikersnaam: " + getGebruikersnaam());
         System.out.println("Programmeerniveau: " + getProgrammeerNiveau());
-
     }
 }

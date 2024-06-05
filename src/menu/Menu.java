@@ -45,9 +45,6 @@ public class Menu {
             } catch (Exception e) {
                 System.out.println("Ongeldige invoer");
             }
-
         }
-
     }
-
 }

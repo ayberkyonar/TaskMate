@@ -79,7 +79,6 @@ public class DataSeeder {
         return null;
     }
 
-
     private void initialize() {
         gebruikers.add(new Ontwerper("Ontwerper", 5, "UX Design"));
         gebruikers.add(new Programmeur("Programmeur", "Junior"));
@@ -94,7 +93,6 @@ public class DataSeeder {
         MenukeuzeEditTaak editTaak = new MenukeuzeEditTaak ("Bewerk een taak");
         MenukeuzeBekijkProfiel bekijkProfiel = new MenukeuzeBekijkProfiel ("Bekijk profiel");
         MenukeuzeExit exit = new MenukeuzeExit ("Exit");
-
 
         Menu menu = new Menu("Gebruiker");
         menu.addMenukeuze(inloggen);
@@ -114,7 +112,4 @@ public class DataSeeder {
         menus.add(ingelogdMenu);
 
     }
-
-
-
 }

@@ -12,4 +12,5 @@ public class MenukeuzeLogout extends Menukeuze {
     public void voerMenukeuzeUit () {
         Security.getInstance ().logout ();
     }
+
 }

@@ -18,7 +18,6 @@ public class MenukeuzeAddTaak extends Menukeuze{
         Security security = Security.getInstance();
         Gebruiker gebruiker = security.getActieveGebruiker();
 
-
         System.out.println();
         System.out.println("Voer de naam van de sprint in waarin de taak moet worden aangemaakt: ");
         String sprintNaam = scanner.nextLine();
@@ -86,7 +85,5 @@ public class MenukeuzeAddTaak extends Menukeuze{
         }
         chosenSprint.addTaak(nieuweTaak, gebruiker);
         DataSeeder.getInstance().addTaak(nieuweTaak);
-        //System.out.println("Nieuwe taak '" + taakNaam + "' is toegevoegd aan de sprint '" + chosenSprint.getNaam() + "'.");
-        //System.out.println();
     }
 }

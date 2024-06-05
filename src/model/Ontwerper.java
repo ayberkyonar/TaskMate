@@ -27,7 +27,5 @@ public class Ontwerper extends Gebruiker {
         System.out.println("Gebruikersnaam: " + getGebruikersnaam());
         System.out.println("Ontwerp ervaring: " + getOntwerpErvaring());
         System.out.println("Ontwerp specialisatie: " + getOntwerpSpecialisatie());
-
     }
-
 }

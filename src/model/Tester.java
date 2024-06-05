@@ -19,6 +19,5 @@ public class Tester extends Gebruiker {
     public void bekijkProfiel(){
         System.out.println("Gebruikersnaam: " + getGebruikersnaam());
         System.out.println("Aantal testcases: " + getAantalTestCases());
-
     }
 }

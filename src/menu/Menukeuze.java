@@ -14,5 +14,4 @@ public abstract class Menukeuze {
 
     abstract public void voerMenukeuzeUit();
 
-
 }

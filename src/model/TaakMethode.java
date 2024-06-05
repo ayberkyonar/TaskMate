@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class TaakMethode {
 
     public void load(Taak taak) {
