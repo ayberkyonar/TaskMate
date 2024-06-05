@@ -20,4 +20,5 @@ public class Tester extends Gebruiker {
         System.out.println("Gebruikersnaam: " + getGebruikersnaam());
         System.out.println("Aantal testcases: " + getAantalTestCases());
     }
+
 }
