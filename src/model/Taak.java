@@ -1,5 +1,9 @@
 package model;
 
+import utils.Observer;
+import utils.TaakMelder;
+import utils.TaakMethode;
+
 import java.util.ArrayList;
 import java.util.Date;
 

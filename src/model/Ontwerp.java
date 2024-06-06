@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Date;
-import model.TaakMethode;
+import utils.TaakMethode;
 
 public class Ontwerp extends Taak{
     private String ontwerpTool;

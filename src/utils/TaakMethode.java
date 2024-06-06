@@ -1,4 +1,6 @@
-package model;
+package utils;
+
+import model.Taak;
 
 public class TaakMethode {
 

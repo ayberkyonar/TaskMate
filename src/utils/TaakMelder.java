@@ -1,4 +1,6 @@
-package model;
+package utils;
+
+import utils.Observer;
 
 public interface TaakMelder {
 

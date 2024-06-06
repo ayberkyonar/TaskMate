@@ -1,7 +1,6 @@
 package model;
 
-import menu.Menu;
-import utils.DataSeeder;
+import utils.Observer;
 
 public abstract class Gebruiker implements Observer {
 

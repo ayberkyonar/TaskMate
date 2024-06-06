@@ -1,5 +1,7 @@
 package model;
 
+import utils.TaakMethode;
+
 import java.util.Date;
 
 public class Programmeer extends Taak{
