@@ -4,8 +4,9 @@ import model.*;
 import utils.*;
 import java.util.Date;
 import java.util.Scanner;
-
 public class MenukeuzeAddTaak extends Menukeuze{
+
+    private Scanner scanner = new Scanner(System.in);
 
     public MenukeuzeAddTaak(String titel){
         super(titel);
@@ -13,11 +14,24 @@ public class MenukeuzeAddTaak extends Menukeuze{
 
     @Override
     public void voerMenukeuzeUit(){
-        Scanner scanner = new Scanner(System.in);
-
         Security security = Security.getInstance();
         Gebruiker gebruiker = security.getActieveGebruiker();
 
+        Sprint chosenSprint = getSprint();
+        if (chosenSprint == null) {
+            return;
+        }
+
+        Taak nieuweTaak = createTaak();
+        if (nieuweTaak == null) {
+            return;
+        }
+
+        chosenSprint.addTaak(nieuweTaak, gebruiker);
+        DataSeeder.getInstance().addTaak(nieuweTaak);
+    }
+
+    private Sprint getSprint() {
         System.out.println();
         System.out.println("Voer de naam van de sprint in waarin de taak moet worden aangemaakt: ");
         String sprintNaam = scanner.nextLine();
@@ -25,14 +39,17 @@ public class MenukeuzeAddTaak extends Menukeuze{
         Sprint chosenSprint = DataSeeder.getInstance().getSprint(sprintNaam);
         if (chosenSprint == null) {
             System.out.println("Sprint '" + sprintNaam + "' bestaat niet. Maak eerst een sprint aan.");
-            return;
         }
+        return chosenSprint;
+    }
 
+    private Taak createTaak() {
         System.out.println("Voer de naam van de nieuwe taak in: ");
         String taakNaam = scanner.nextLine();
 
         System.out.println("Voer de beschrijving van de nieuwe taak in: ");
         String taakBeschrijving = scanner.nextLine();
+
         System.out.println("Voer de aantal punten die je wilt geven aan de taak (je kan dit ook leeg laten): ");
         String taakPuntenInput = scanner.nextLine();
 
@@ -42,48 +59,54 @@ public class MenukeuzeAddTaak extends Menukeuze{
         System.out.println("Voer de status van de taak in (Gepland, Bezig, Klaar): ");
         String taakStatus = scanner.nextLine();
 
-        Taak nieuweTaak;
         switch (taakType.toLowerCase()) {
             case "ontwerp":
-                System.out.println("Voer de ontwerptool in die wordt gebruikt: ");
-                String ontwerpTool = scanner.nextLine();
-                if (taakPuntenInput.isEmpty()) {
-                    nieuweTaak = new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), ontwerpTool);
-                } else {
-                    int taakPunten = Integer.parseInt(taakPuntenInput);
-                    nieuweTaak = new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, ontwerpTool);
-                }
-                break;
+                return createOntwerpTaak(taakNaam, taakBeschrijving, taakStatus, taakPuntenInput);
             case "programmeer":
-                System.out.println("Voer de programmeertaal in die wordt gebruikt: ");
-                String programmeerTaal = scanner.nextLine();
-                System.out.println("Voer het aantal klassen in dat wordt gebruikt: ");
-                int aantalKlassen = scanner.nextInt();
-                scanner.nextLine();
-
-                if (taakPuntenInput.isEmpty()) {
-                    nieuweTaak = new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), programmeerTaal, aantalKlassen);
-                } else {
-                    int taakPunten = Integer.parseInt(taakPuntenInput);
-                    nieuweTaak = new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, programmeerTaal, aantalKlassen);
-                }
-                break;
+                return createProgrammeerTaak(taakNaam, taakBeschrijving, taakStatus, taakPuntenInput);
             case "test":
-                System.out.println("Voer het aantal testcases in: ");
-                int aantalTestCases = scanner.nextInt();
-                scanner.nextLine();
-                if (taakPuntenInput.isEmpty()) {
-                    nieuweTaak = new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), aantalTestCases);
-                } else {
-                    int taakPunten = Integer.parseInt(taakPuntenInput);
-                    nieuweTaak = new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, aantalTestCases);
-                }
-                break;
+                return createTestTaak(taakNaam, taakBeschrijving, taakStatus, taakPuntenInput);
             default:
                 System.out.println("Taak is niet aangemaakt, probeer het opnieuw.");
-                return;
+                return null;
         }
-        chosenSprint.addTaak(nieuweTaak, gebruiker);
-        DataSeeder.getInstance().addTaak(nieuweTaak);
+    }
+
+    private Taak createOntwerpTaak(String taakNaam, String taakBeschrijving, String taakStatus, String taakPuntenInput) {
+        System.out.println("Voer de ontwerptool in die wordt gebruikt: ");
+        String ontwerpTool = scanner.nextLine();
+        if (taakPuntenInput.isEmpty()) {
+            return new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), ontwerpTool);
+        } else {
+            int taakPunten = Integer.parseInt(taakPuntenInput);
+            return new Ontwerp(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, ontwerpTool);
+        }
+    }
+
+    private Taak createProgrammeerTaak(String taakNaam, String taakBeschrijving, String taakStatus, String taakPuntenInput) {
+        System.out.println("Voer de programmeertaal in die wordt gebruikt: ");
+        String programmeerTaal = scanner.nextLine();
+        System.out.println("Voer het aantal klassen in dat wordt gebruikt: ");
+        int aantalKlassen = scanner.nextInt();
+        scanner.nextLine();
+
+        if (taakPuntenInput.isEmpty()) {
+            return new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), programmeerTaal, aantalKlassen);
+        } else {
+            int taakPunten = Integer.parseInt(taakPuntenInput);
+            return new Programmeer(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, programmeerTaal, aantalKlassen);
+        }
+    }
+
+    private Taak createTestTaak(String taakNaam, String taakBeschrijving, String taakStatus, String taakPuntenInput) {
+        System.out.println("Voer het aantal testcases in: ");
+        int aantalTestCases = scanner.nextInt();
+        scanner.nextLine();
+        if (taakPuntenInput.isEmpty()) {
+            return new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), aantalTestCases);
+        } else {
+            int taakPunten = Integer.parseInt(taakPuntenInput);
+            return new Test(taakNaam, taakBeschrijving, taakStatus, new Date(), taakPunten, aantalTestCases);
+        }
     }
 }
