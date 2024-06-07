@@ -31,12 +31,6 @@ public class Programmeer extends Taak{
     }
 
     @Override
-    public void showTaak() {
-        TaakMethode taakMethode = new TaakMethode();
-        taakMethode.load(this);
-    }
-
-    @Override
     public void printSpecifiekeInformatie() {
         System.out.println("Programmeertaal: " + getProgrammeerTaal());
         System.out.println("Aantal klassen: " + getAantalKlassen());

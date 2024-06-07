@@ -21,12 +21,6 @@ public class Ontwerp extends Taak{
     }
 
     @Override
-    public void showTaak() {
-        TaakMethode taakMethode = new TaakMethode();
-        taakMethode.load(this);
-    }
-
-    @Override
     public void printSpecifiekeInformatie() {
         System.out.println("Ontwerp tool: " + getOntwerpTool());
     }
