@@ -1,5 +1,7 @@
 package model;
 
+import utils.TaakMelder;
+
 import java.util.ArrayList;
 
 public class Sprint {
@@ -26,7 +28,8 @@ public class Sprint {
 
     public void addTaak(Taak taak, Gebruiker observer) {
         taken.add(taak);
-        taak.registerObserver(observer);
+        TaakMelder taakMelder = new TaakMelder();
+        taakMelder.registerObserver(taak, observer);
     }
 
 }

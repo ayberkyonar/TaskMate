@@ -7,14 +7,14 @@ import utils.TaakMethode;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class Taak implements TaakMelder {
+public abstract class Taak {
 
     private String naam;
     private String beschrijving;
     private String status;
     private Date datumTijd;
     private int taakPunten;
-    private ArrayList<Observer> observers = new ArrayList<>();
+    public ArrayList<Observer> observers = new ArrayList<>();
 
     Taak(String naam, String beschrijving, String status, Date datumTijd) {
         this.naam = naam;
@@ -50,7 +50,8 @@ public abstract class Taak implements TaakMelder {
 
     public void setStatus(String nieuweTaakStatus) {
         this.status = nieuweTaakStatus;
-        notifyObservers();
+        TaakMelder taakMelder = new TaakMelder();
+        taakMelder.notifyObservers(this);
     }
 
     public void showTaak() {
@@ -61,22 +62,5 @@ public abstract class Taak implements TaakMelder {
     abstract public String getTaakType();
 
     abstract public void printSpecifiekeInformatie();
-
-    @Override
-    public void registerObserver(Observer o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(Observer o) {
-        observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update(this);
-        }
-    }
 
 }
