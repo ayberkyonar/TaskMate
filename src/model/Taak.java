@@ -14,8 +14,6 @@ public abstract class Taak implements TaakMelder {
     private String status;
     private Date datumTijd;
     private int taakPunten;
-    private TaakMethode taakMethode = new TaakMethode();
-
     private ArrayList<Observer> observers = new ArrayList<>();
 
     Taak(String naam, String beschrijving, String status, Date datumTijd) {
@@ -56,6 +54,7 @@ public abstract class Taak implements TaakMelder {
     }
 
     public void showTaak() {
+        TaakMethode taakMethode = new TaakMethode();
         taakMethode.load(this);
     }
 
