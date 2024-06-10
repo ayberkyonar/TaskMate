@@ -44,8 +44,16 @@ public class MenukeuzeAddTaak extends Menukeuze{
     }
 
     private Taak createTaak() {
-        System.out.println("Voer de naam van de nieuwe taak in: ");
-        String taakNaam = scanner.nextLine();
+        String taakNaam;
+        do {
+            System.out.println("Voer de naam van de nieuwe taak in: ");
+            taakNaam = scanner.nextLine();
+
+            if (DataSeeder.getInstance().getTaak(taakNaam) != null) {
+                System.out.println("Een taak met deze naam bestaat al. Probeer het opnieuw met een andere naam.");
+                taakNaam = null;
+            }
+        } while (taakNaam == null);
 
         System.out.println("Voer de beschrijving van de nieuwe taak in: ");
         String taakBeschrijving = scanner.nextLine();
