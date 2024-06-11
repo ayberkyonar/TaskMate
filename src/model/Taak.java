@@ -23,7 +23,7 @@ public abstract class Taak {
         this.datumTijd = datumTijd;
     }
 
-    Taak (String naam, String beschrijving, String status, Date datumTijd, int taakPunten) {
+    Taak(String naam, String beschrijving, String status, Date datumTijd, int taakPunten) {
         this(naam, beschrijving, status, datumTijd);
         this.taakPunten = taakPunten;
     }
@@ -63,4 +63,31 @@ public abstract class Taak {
 
     abstract public void printSpecifiekeInformatie();
 
+    public boolean testTaakInvoer(boolean ingevuldeTaakNaam, boolean geldigeTaakNaam, boolean geldigeTaakType) {
+        return ingevuldeTaakNaam && geldigeTaakNaam && geldigeTaakType;
+    }
+
+    public String taakGrootte(int taakPunten) {
+        if (taakPunten < 5) {
+            return "Kleine taak";
+        } else if (taakPunten >= 5 && taakPunten < 10) {
+            return "Middelmatige taak";
+        } else if (taakPunten >= 10) {
+            return "Grote taak";
+        } else {
+            return null;
+        }
+    }
+
+    public String testTaakFuncties(String taakGrootte, boolean ingevuldeTaakNaam, boolean geldigeTaakNaam, boolean geldigeTaakType) {
+        if (!ingevuldeTaakNaam) {
+            return "Vul de taaknaam in";
+        } else if (!geldigeTaakNaam) {
+            return "Deze taaknaam bestaat al";
+        } else if (!geldigeTaakType) {
+            return "Geen geldige taaktype ingevuld";
+        }
+
+        return "De grootte van jouw taak is: " + taakGrootte;
+    }
 }
