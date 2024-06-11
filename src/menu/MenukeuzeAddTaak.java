@@ -29,6 +29,8 @@ public class MenukeuzeAddTaak extends Menukeuze{
 
         chosenSprint.addTaak(nieuweTaak, gebruiker);
         DataSeeder.getInstance().addTaak(nieuweTaak);
+        System.out.println("Nieuwe taak is succesvol aangemaakt");
+        System.out.println();
     }
 
     private Sprint getSprint() {
@@ -48,6 +50,10 @@ public class MenukeuzeAddTaak extends Menukeuze{
         do {
             System.out.println("Voer de naam van de nieuwe taak in: ");
             taakNaam = scanner.nextLine();
+            if (taakNaam == null || taakNaam.isEmpty()) {
+                System.out.println("Naam van de taak mag niet leeg zijn.");
+                taakNaam = null;
+            }
 
             if (DataSeeder.getInstance().getTaak(taakNaam) != null) {
                 System.out.println("Een taak met deze naam bestaat al. Probeer het opnieuw met een andere naam.");
@@ -63,6 +69,10 @@ public class MenukeuzeAddTaak extends Menukeuze{
 
         System.out.println("Voer het type van de taak in (Ontwerp, Programmeer, Test): ");
         String taakType = scanner.nextLine();
+        if (!taakType.equalsIgnoreCase("ontwerp") && !taakType.equalsIgnoreCase("programmeer") && !taakType.equalsIgnoreCase("test")){
+            System.out.println("Type van de taak moet Ontwerp, Programmeer of Test zijn. ");
+            return null;
+        }
 
         System.out.println("Voer de status van de taak in (Gepland, Bezig, Klaar): ");
         String taakStatus = scanner.nextLine();
@@ -74,8 +84,7 @@ public class MenukeuzeAddTaak extends Menukeuze{
                 return createProgrammeerTaak(taakNaam, taakBeschrijving, taakStatus, taakPuntenInput);
             case "test":
                 return createTestTaak(taakNaam, taakBeschrijving, taakStatus, taakPuntenInput);
-            default:
-                System.out.println("Taak is niet aangemaakt, probeer het opnieuw.");
+              default:
                 return null;
         }
     }
